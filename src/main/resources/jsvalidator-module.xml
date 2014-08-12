@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="br.com.dlbca.validation.engine.JavascriptValidatorEngine"
+          lazy-init="true"
+          primary="false"
+          scope="prototype"
+          autowire-candidate="true">
+        <property name="pathScript" value="#{getObject('jsValidatorPath')!=null?jsValidatorPath:'/validator.js'}"/>
+    </bean>
+
+    <bean class="br.com.dlbca.validation.ValidatorExecution"
+          lazy-init="true"
+          primary="false"
+          scope="prototype"
+          autowire="constructor"
+          autowire-candidate="true"/>
+</beans>
