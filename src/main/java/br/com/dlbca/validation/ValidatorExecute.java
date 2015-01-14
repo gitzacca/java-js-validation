@@ -8,5 +8,5 @@ import java.util.List;
  * Created by guilherme on 11/08/14.
  */
 public interface ValidatorExecute {
-    public ValidatorResult validate(List<String> constrains);
+    public ValidatorResult using(List<String> constrains);
 }

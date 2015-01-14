@@ -23,7 +23,7 @@ public class ValidatorTest {
 
     @Test
     public void shouldReturnInstanceWithDI() {
-        ValidatorResult vResutl = validator.forData(givenPersonWithContacts()).validate(givenConstrainsForPerson());
+        ValidatorResult vResutl = validator.validate(givenPersonWithContacts()).using(givenConstrainsForPerson());
 
         Assert.assertNotNull(vResutl);
     }
@@ -44,6 +44,11 @@ public class ValidatorTest {
         public Person(String name) {
             this.name = name;
         }
+
+		public String getName() {
+			return name;
+		}
+        
     }
 
 }

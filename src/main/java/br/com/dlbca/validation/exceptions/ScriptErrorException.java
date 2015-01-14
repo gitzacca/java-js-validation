@@ -1,12 +1,16 @@
 package br.com.dlbca.validation.exceptions;
 
-import javax.script.ScriptException;
 
 /**
  * Created by guilherme on 08/08/14.
  */
 public class ScriptErrorException extends RuntimeException {
-    public ScriptErrorException(String message, Exception e) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3336340892502076137L;
+
+	public ScriptErrorException(String message, Exception e) {
         super(message, e);
     }
 }

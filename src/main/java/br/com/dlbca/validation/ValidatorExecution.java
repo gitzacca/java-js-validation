@@ -19,14 +19,14 @@ public class ValidatorExecution implements Validator, ValidatorExecute {
     }
 
     @Override
-    public ValidatorExecute forData(Object data) {
+    public ValidatorExecute validate(Object data) {
         this.data = data;
 
         return this;
     }
 
     @Override
-    public ValidatorResult validate(List<String> constrains) {
+    public ValidatorResult using(List<String> constrains) {
         this.constrains = constrains;
 
         engine.setData(this.data);
