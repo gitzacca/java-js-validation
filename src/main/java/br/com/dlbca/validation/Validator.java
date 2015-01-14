@@ -4,5 +4,5 @@ package br.com.dlbca.validation;
  * Created by guilherme on 08/08/14.
  */
 public interface Validator {
-    public ValidatorExecute forData(Object data);
+    public ValidatorExecute validate(Object data);
 }

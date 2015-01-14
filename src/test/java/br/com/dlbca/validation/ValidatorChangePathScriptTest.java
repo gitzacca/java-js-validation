@@ -1,15 +1,15 @@
 package br.com.dlbca.validation;
 
-import br.com.dlbca.validation.engine.ValidatorResult;
-import br.com.dlbca.validation.exceptions.ScriptNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.com.dlbca.validation.exceptions.ScriptNotFoundException;
 
 /**
  * Created by guilherme on 11/08/14.
@@ -23,7 +23,7 @@ public class ValidatorChangePathScriptTest {
 
     @Test(expected = ScriptNotFoundException.class)
     public void shouldReturnInstanceWithDI() {
-        ValidatorResult vResutl = validator.forData(givenPersonWithContacts()).validate(givenConstrainsForPerson());
+        validator.validate(givenPersonWithContacts()).using(givenConstrainsForPerson());
     }
 
     private Person givenPersonWithContacts() {
@@ -37,11 +37,17 @@ public class ValidatorChangePathScriptTest {
     }
 
     public class Person {
-        private String name;
+        
+    	private String name;
 
         public Person(String name) {
             this.name = name;
         }
+
+		public String getName() {
+			return name;
+		}
+        
     }
 
 }

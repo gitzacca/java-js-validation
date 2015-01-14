@@ -4,6 +4,7 @@ import br.com.dlbca.validation.exceptions.ScriptErrorException;
 import br.com.dlbca.validation.exceptions.ScriptNotFoundException;
 
 import javax.script.*;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
@@ -51,13 +52,15 @@ public class JavascriptValidatorEngine implements ValidatorEngine {
                 return (boolean) engine.get("hasErrors");
             }
 
-            @Override
+			@Override
+			@SuppressWarnings("unchecked")
             public Map<String, Object> getAllFailures() {
                 runJsCommand("var allErrors = vResult.getAllFailures();");
                 return (Map<String, Object>) engine.get("allErrors");
             }
 
-            @Override
+			@Override
+			@SuppressWarnings("unchecked")
             public List<String> getError(String field) {
                 variables.put("field", field);
                 runJsCommand("var error = vResult.getError(field);");

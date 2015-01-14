@@ -2,6 +2,7 @@ package br.com.dlbca.validation.engine;
 
 import br.com.dlbca.validation.exceptions.ScriptErrorException;
 import br.com.dlbca.validation.exceptions.ScriptNotFoundException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -70,13 +71,14 @@ public class JavasciptValidatorEngineTest {
         Assert.assertFalse(vResult.hasErrors());
     }
 
-    @Test
+	@Test
+	@SuppressWarnings("unchecked")
     public void shouldReturnNameNotEmpty() {
 
         ValidatorResult vResult = engine.validate();
         Map<String, Object> allFailures = vResult.getAllFailures();
 
-        List<String> nameFailures = (List) allFailures.get("name");
+		List<String> nameFailures = (List<String>) allFailures.get("name");
 
         Assert.assertEquals(nameFailures.get(0), "notEmpty");
     }
@@ -85,7 +87,7 @@ public class JavasciptValidatorEngineTest {
     public void shouldReturnListWithFailConstrains() {
 
         ValidatorResult vResult = engine.validate();
-        List<String> nameFailures = (List) vResult.getError("name");
+        List<String> nameFailures = (List<String>) vResult.getError("name");
 
         Assert.assertEquals(nameFailures.get(0), "notEmpty");
     }
@@ -112,6 +114,15 @@ public class JavasciptValidatorEngineTest {
             this.contacts = contacts;
             this.name = name;
         }
+
+		public String getName() {
+			return name;
+		}
+
+		public ArrayList<Contact> getContacts() {
+			return contacts;
+		}
+        
     }
 
     public class Contact {
@@ -120,7 +131,11 @@ public class JavasciptValidatorEngineTest {
         public Contact(String value) {
             this.value = value;
         }
-    }
 
+		public String getValue() {
+			return value;
+		}
+        
+    }
 
 }
