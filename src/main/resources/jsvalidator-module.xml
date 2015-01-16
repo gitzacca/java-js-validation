@@ -8,7 +8,7 @@
           primary="false"
           scope="prototype"
           autowire-candidate="true">
-        <property name="pathScript" value="#{getObject('jsValidatorPath')!=null?jsValidatorPath:'/validator.js'}"/>
+        <property name="pathScript" value="#{getObject('jsValidatorPath')!=null?jsValidatorPath:'./Validator.js'}"/>
     </bean>
 
     <bean class="br.com.dlbca.validation.ValidatorExecution"

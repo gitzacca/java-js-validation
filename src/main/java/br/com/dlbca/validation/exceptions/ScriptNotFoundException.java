@@ -10,6 +10,10 @@ public class ScriptNotFoundException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 4445877820949992634L;
 
+	public ScriptNotFoundException(String message) {
+		super(message);
+	}
+	
 	public ScriptNotFoundException(String message, Exception exception) {
         super(message, exception);
     }
