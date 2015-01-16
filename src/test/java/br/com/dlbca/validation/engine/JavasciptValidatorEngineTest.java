@@ -24,7 +24,7 @@ public class JavasciptValidatorEngineTest {
         engine = new JavascriptValidatorEngine();
         engine.setData(givenPersonWithContacts());
         engine.setConstrains(givenConstrainsForPerson());
-        engine.setPathScript("/validator.js");
+        engine.setPathScript("./validator.js");
     }
 
     @Test(expected = ScriptNotFoundException.class)
@@ -35,13 +35,13 @@ public class JavasciptValidatorEngineTest {
 
     @Test(expected = ScriptErrorException.class)
     public void throwExceptionIfScriptNotContainsValidator() {
-        engine.setPathScript("/validatorWithoutPrincipalClass.js");
+        engine.setPathScript("./validatorWithoutPrincipalClass.js");
         engine.validate();
     }
 
     @Test(expected = ScriptErrorException.class)
     public void throwExceptionIfScriptNotContainsHasErrorsMethod() {
-        engine.setPathScript("/validatorWithoutValidateResult.js");
+        engine.setPathScript("./validatorWithoutValidateResult.js");
 
         ValidatorResult vResult = engine.validate();
         vResult.hasErrors();
@@ -49,7 +49,7 @@ public class JavasciptValidatorEngineTest {
 
     @Test(expected = ScriptErrorException.class)
     public void throwExceptionIfScriptNotContainsGetAllFailures() {
-        engine.setPathScript("/validatorWithoutValidateResult.js");
+        engine.setPathScript("./validatorWithoutValidateResult.js");
 
         ValidatorResult vResult = engine.validate();
         vResult.getAllFailures();
@@ -57,7 +57,7 @@ public class JavasciptValidatorEngineTest {
 
     @Test(expected = ScriptErrorException.class)
     public void throwExceptionIfScriptNotContainsGetError() {
-        engine.setPathScript("/validatorWithoutValidateResult.js");
+        engine.setPathScript("./validatorWithoutValidateResult.js");
 
         ValidatorResult vResult = engine.validate();
         vResult.getError("name");

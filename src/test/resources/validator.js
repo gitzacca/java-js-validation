@@ -1,21 +1,10 @@
-var Validator = function (data, constrains) {
-    this.validate = function () {
-        return new ValidationResult();
-    };
-};
+define('./validator',['./validationResult'], function(ValidationResult){
+	var Validator = function (data, constrains) {
+	    this.validate = function () {
+	        return new ValidationResult();
+	    };
+	};
+	
+	return Validator;
+});
 
-var ValidationResult = function () {
-    this.hasErrors = function () {
-        return false;
-    }
-
-    this.getAllFailures = function () {
-        return {
-            name: ['notEmpty']
-        };
-    }
-
-    this.getError = function (name) {
-        return ['notEmpty'];
-    }
-}
