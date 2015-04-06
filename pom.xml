@@ -73,13 +73,13 @@
         <repository>
             <id>dlbca-release</id>
             <name>DLBCA Release</name>
-            <url>http://172.17.0.35:8080/labs/nexus/content/repositories/releases</url>
+            <url>http://172.17.0.35/labs/nexus/content/repositories/releases</url>
         </repository>
 
         <snapshotRepository>
             <id>dlbca-snapshot</id>
             <name>DLBCA Snapshot</name>
-            <url>http://172.17.0.35:8080/labs/nexus/content/repositories/snapshots</url>
+            <url>http://172.17.0.35/labs/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
