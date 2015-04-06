@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.mozilla.javascript.Context;
+import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
 import org.springframework.core.io.ClassPathResource;
@@ -111,6 +112,17 @@ public class JavascriptValidatorEngine implements ValidatorEngine {
 			arrayConstraints[count] =  Context.javaToJS(constraint, sharedScope);
 			count ++;
 		}
+        
+        if(data instanceof Map){
+        	NativeObject nobj = new NativeObject();
+        	Map<String, Object> map = (Map)data;
+        	
+        	for (Map.Entry<String, Object> entry : map.entrySet()) {
+        	    nobj.defineProperty(entry.getKey(), entry.getValue(), NativeObject.READONLY);
+        	}
+        	
+        	data = nobj;
+        }
         
         sharedScope.put("data", sharedScope, Context.javaToJS(data, sharedScope));
         sharedScope.put("constrains", sharedScope, arrayConstraints);
